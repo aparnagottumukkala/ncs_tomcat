@@ -16,6 +16,7 @@ pipeline {
                 echo "generating war file"
                 sh "cd $TEMP_DIR"
                 sh '''
+                   cd $TEMP_DIR
                    pwd
                    jar -cvf sample_${BUILD_NUMBER}.war sample/*
                    ls -ltr
