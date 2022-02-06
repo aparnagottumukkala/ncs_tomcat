@@ -27,8 +27,12 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Stop catalina"
-                sh "cd $ROOT_PATH"
-                sh "./bin/catalina.sh stop"
+                sh '''
+
+                  cd $ROOT_PATH
+                  ./bin/catalina.sh stop
+
+                '''
 
                 echo 'Deploying....'
                 echo "Remove older war files"
