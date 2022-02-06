@@ -55,8 +55,13 @@ pipeline {
        stage('Start Catalina') {
            steps {
                echo "Start catalina"
-               sh "cd $ROOT_PATH"
-               sh "./bin/catalina.sh start"
+                sh '''
+
+                  cd $ROOT_PATH
+                  pwd
+                  ./bin/catalina.sh start
+
+                '''
            }
        }
     }
