@@ -13,7 +13,7 @@ pipeline {
                 echo "BuildNumber :: ${env.BUILD_NUMBER}"
                 
                 echo "generating war file"
-                cd $WORKSPACE/sample
+                sh "cd ${env.WORKSPACE}/sample"
                 sh "jar -cvf sample_${BUILD_NUMBER}.war *"
 
                 sh "ls -ltr"
