@@ -62,7 +62,7 @@ pipeline {
 
                   cd $ROOT_PATH
                   pwd
-                  ./bin/catalina.sh start
+                  ./bin/catalina.sh start &
 
                 '''
            }
