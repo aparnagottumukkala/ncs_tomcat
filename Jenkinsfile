@@ -51,7 +51,7 @@ pipeline {
                    echo "deploy new application"
                 '''
                 sh "ls -ltr ${TEMP_DIR}/sample_${env.BUILD_NUMBER}.war"
-                sh "cp ${TEMP_DIR}/sample_${env.BUILD_NUMBER}.war $APP_PATH/"
+                sh "cp ${TEMP_DIR}/sample_${env.BUILD_NUMBER}.war $APP_PATH/sample.war"
                 sh "ls -ltr $APP_PATH" 
             }
         }
