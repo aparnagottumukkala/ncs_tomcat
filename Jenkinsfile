@@ -9,6 +9,7 @@ pipeline {
             steps {
                 echo 'Compile..'
                 sh 'printenv'
+                echo 'Workspace :: $WORKSPACE \n BuildNumber :: ${BUILD_NUMBER}'
                 sh "ls -ltr"
                 echo "generating war file"
                 cd $WORKSPACE/sample
