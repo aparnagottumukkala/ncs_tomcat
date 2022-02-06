@@ -27,7 +27,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Stop catalina"
-                sh ".$ROOT_PATH/bin/catalina.sh stop"
+                sh "cd $ROOT_PATH"
+                sh "./bin/catalina.sh stop"
 
                 echo 'Deploying....'
                 echo "Remove older war files"
@@ -46,7 +47,8 @@ pipeline {
        stage('Start Catalina') {
            steps {
                echo "Start catalina"
-               sh ".$ROOT_PATH/bin/catalina.sh start"
+               sh "cd $ROOT_PATH"
+               sh "./bin/catalina.sh stop"
            }
        }
     }
