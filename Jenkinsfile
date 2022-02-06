@@ -4,8 +4,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Compile..'
+                sh 'printenv'
                 sh "ls -ltr"
+                Echo "generating war file"
+                sh "jar -cvf sample_${BUILD_NUMBER}.war *"
             }
         }
         stage('Test') {
