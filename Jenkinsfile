@@ -7,7 +7,7 @@ pipeline {
                 echo 'Compile..'
                 sh 'printenv'
                 sh "ls -ltr"
-                Echo "generating war file"
+                echo "generating war file"
                 sh "jar -cvf sample_${BUILD_NUMBER}.war *"
             }
         }
