@@ -3,6 +3,7 @@ pipeline {
     environment {
         ROOT_PATH  =  "/Users/manojvarma/Desktop/NCS_Demo/apache-tomcat-9.0.58"
         APP_PATH   =  "$ROOT_PATH/webapps"
+        TEMP_DIR   =  "${env.WORKSPACE}/sample"
     }
     stages {
         stage('Build') {
@@ -13,11 +14,10 @@ pipeline {
                 echo "BuildNumber :: ${env.BUILD_NUMBER}"
                 
                 echo "generating war file"
-                sh "cd ${env.WORKSPACE}/sample"
+                sh "cd $TEMP_DIR"
                 sh '''
-                   cd ${env.WORKSPACE}/sample
                    pwd
-                   jar -cvf sample_${BUILD_NUMBER}.war *
+                   jar -cvf sample_${BUILD_NUMBER}.war sample/*
                    ls -ltr
                 '''
             }
