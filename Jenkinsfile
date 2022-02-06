@@ -13,10 +13,11 @@ pipeline {
                 echo "BuildNumber :: ${env.BUILD_NUMBER}"
                 
                 echo "generating war file"
-                sh "cd ${env.WORKSPACE}/sample"
-                sh "jar -cvf sample_${BUILD_NUMBER}.war *"
-
-                sh "ls -ltr"
+                sh '''
+                   cd ${env.WORKSPACE}/sample"
+                   jar -cvf sample_${BUILD_NUMBER}.war *
+                   ls -ltr
+                '''
             }
         }
         stage('Test') {
@@ -44,8 +45,8 @@ pipeline {
                    ls -ltr $APP_PATH/
                    
                    echo "deploy new application"
-                   ls -ltr ${env.WORKSPACE}/sample/sample_${env.BUILD_NUMBER}.war  
-                   cp ${env.WORKSPACE}/sample/sample_${env.BUILD_NUMBER}.war $APP_PATH/
+                   ls -ltr ${env.WORKSPACE}/sample_${env.BUILD_NUMBER}.war  
+                   cp ${env.WORKSPACE}/sample_${env.BUILD_NUMBER}.war $APP_PATH/
                 '''
             }
         }
@@ -53,7 +54,7 @@ pipeline {
            steps {
                echo "Start catalina"
                sh "cd $ROOT_PATH"
-               sh "./bin/catalina.sh stop"
+               sh "./bin/catalina.sh start"
            }
        }
     }
