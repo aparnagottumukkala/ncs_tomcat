@@ -11,10 +11,12 @@ pipeline {
                 sh 'printenv'
                 echo "workspace ${env.WORKSPACE}" 
                 echo "BuildNumber :: ${env.BUILD_NUMBER}"
-                sh "ls -ltr"
+                
                 echo "generating war file"
                 cd $WORKSPACE/sample
                 sh "jar -cvf sample_${BUILD_NUMBER}.war *"
+
+                sh "ls -ltr"
             }
         }
         stage('Test') {
@@ -37,7 +39,7 @@ pipeline {
                    ls -ltr $APP_PATH/
                    
                    echo "deploy new application"
-                   cp $WORKSPACE/sample/sample_${BUILD_NUMBER}.war $APP_PATH
+                   cp ${env.WORKSPACE}/sample/sample_${BUILD_NUMBER}.war $APP_PATH
                 '''
             }
         }
