@@ -14,7 +14,7 @@ pipeline {
                 
                 echo "generating war file"
                 sh '''
-                   cd ${env.WORKSPACE}/sample"
+                   cd ${env.WORKSPACE}/sample
                    jar -cvf sample_${BUILD_NUMBER}.war *
                    ls -ltr
                 '''
