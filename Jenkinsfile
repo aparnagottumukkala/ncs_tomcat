@@ -62,7 +62,7 @@ pipeline {
 
                   cd $ROOT_PATH
                   pwd
-                  nohup bin/catalina.sh start  > /dev/null 2>&1 &
+                  nohup bin/catalina.sh start &
 
                 '''
            }
