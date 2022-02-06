@@ -45,9 +45,9 @@ pipeline {
                    ls -ltr $APP_PATH/
                    
                    echo "deploy new application"
-                   ls -ltr ${env.WORKSPACE}/sample_${env.BUILD_NUMBER}.war  
-                   cp ${env.WORKSPACE}/sample_${env.BUILD_NUMBER}.war $APP_PATH/
                 '''
+                sh "ls -ltr ${env.WORKSPACE}/sample_${env.BUILD_NUMBER}.war"
+                sh "cp ${env.WORKSPACE}/sample_${env.BUILD_NUMBER}.war $APP_PATH/" 
             }
         }
        stage('Start Catalina') {
