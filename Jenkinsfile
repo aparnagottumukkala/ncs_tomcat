@@ -44,7 +44,8 @@ pipeline {
                    ls -ltr $APP_PATH/
                    
                    echo "deploy new application"
-                   cp ${env.WORKSPACE}/sample/sample_${BUILD_NUMBER}.war $APP_PATH
+                   ls -ltr ${env.WORKSPACE}/sample/sample_${env.BUILD_NUMBER}.war  
+                   cp ${env.WORKSPACE}/sample/sample_${env.BUILD_NUMBER}.war $APP_PATH/
                 '''
             }
         }
