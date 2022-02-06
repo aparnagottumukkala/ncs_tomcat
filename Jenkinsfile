@@ -18,7 +18,7 @@ pipeline {
                 sh '''
                    cd $TEMP_DIR
                    pwd
-                   jar -cvf sample_${BUILD_NUMBER}.war sample/*
+                   jar -cvf sample_${BUILD_NUMBER}.war *
                    ls -ltr
                 '''
             }
