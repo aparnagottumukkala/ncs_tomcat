@@ -15,6 +15,7 @@ pipeline {
                 echo "generating war file"
                 sh "cd ${env.WORKSPACE}/sample"
                 sh '''
+                   pwd
                    jar -cvf sample_${BUILD_NUMBER}.war *
                    ls -ltr
                 '''
@@ -31,6 +32,7 @@ pipeline {
                 sh '''
 
                   cd $ROOT_PATH
+                  pwd
                   ./bin/catalina.sh stop
 
                 '''
