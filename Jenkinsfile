@@ -39,6 +39,15 @@ pipeline {
                 // sh "/opt/homebrew/Cellar/maven/3.8.4/bin/mvn verify sonar:sonar -Dsonar.login=bf2e3735918f3ed8e1fd38f954b8a42d32bc656e "
             }
         }
+        stage('Maven Test') {
+            steps {
+                echo 'Maven Testing..'
+                sh '''
+                cd $TEMP_DIR
+                /opt/homebrew/Cellar/maven/3.8.4/bin/mvn test
+                '''
+            }
+        }
         stage('Deploy') {
             steps {
                 echo "Stop catalina"
