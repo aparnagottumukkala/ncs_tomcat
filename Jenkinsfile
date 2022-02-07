@@ -18,6 +18,7 @@ pipeline {
                 sh '''
                    cd $TEMP_DIR
                    pwd
+                   /opt/homebrew/Cellar/maven/3.8.4/bin/mvn -B org.codehaus.mojo:versions-maven-plugin:2.5:set -DprocessAllModules -DnewVersion=1.0.${env.BUILD_NUMBER}
                    /opt/homebrew/Cellar/maven/3.8.4/bin/mvn clean package
                    ls -ltr target/
                 '''
@@ -43,15 +44,15 @@ pipeline {
                 echo "Remove older war files"
                 sh '''
                    ls -ltr $APP_PATH
-                   rm -rf $APP_PATH/sample*
+                   rm -rf $APP_PATH/mkyong*
 
                    echo "After removing older application (sample)"
                    ls -ltr $APP_PATH/
                    
                    echo "deploy new application"
                 '''
-                sh "ls -ltr ${TEMP_DIR}/sample_${env.BUILD_NUMBER}.war"
-                sh "cp ${TEMP_DIR}/sample_${env.BUILD_NUMBER}.war $APP_PATH/sample.war"
+                sh "ls -ltr ${TEMP_DIR}/target/mkyong_${env.BUILD_NUMBER}.war"
+                sh "cp ${TEMP_DIR}/target/mkyong_${env.BUILD_NUMBER}.war $APP_PATH/mkyong.war"
                 sh "ls -ltr $APP_PATH" 
             }
         }
