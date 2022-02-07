@@ -18,15 +18,16 @@ pipeline {
                 sh '''
                    cd $TEMP_DIR
                    pwd
-                   /opt/homebrew/Cellar/maven/3.8.4/bin/mvn -B org.codehaus.mojo:versions-maven-plugin:2.5:set -DprocessAllModules -DnewVersion=1.0.${env.BUILD_NUMBER}
+                   /opt/homebrew/Cellar/maven/3.8.4/bin/mvn -B org.codehaus.mojo:versions-maven-plugin:2.5:set -DprocessAllModules -DnewVersion="1.0.${env.BUILD_NUMBER}"
                    /opt/homebrew/Cellar/maven/3.8.4/bin/mvn clean package
                    ls -ltr target/
                 '''
             }
         }
-        stage('Test') {
+        stage('SonaqQube Test') {
             steps {
                 echo 'Testing..'
+                opt/homebrew/Cellar/maven/3.8.4/bin/mvn verify sonar:sonar -Dsonar.login=bf2e3735918f3ed8e1fd38f954b8a42d32bc656e
             }
         }
         stage('Deploy') {
