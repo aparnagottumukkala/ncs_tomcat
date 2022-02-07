@@ -79,5 +79,12 @@ pipeline {
                 '''
            }
        }
+      stage('Remving cloned dir') {
+         steps {
+          echo 'Removing cloned dir '
+          sh "rm -rf $TEMP_DIR "
+          sh "ls -ltr  ${env.WORKSPACE}"
+         }
+      }
     }
 }
