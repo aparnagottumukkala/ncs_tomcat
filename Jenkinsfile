@@ -23,7 +23,6 @@ pipeline {
                 sh " /opt/homebrew/Cellar/maven/3.8.4/bin/mvn -B org.codehaus.mojo:versions-maven-plugin:2.5:set -DprocessAllModules -DnewVersion=1.0.$VERSION "
                 sh "   /opt/homebrew/Cellar/maven/3.8.4/bin/mvn clean package "
                 sh "   ls -ltr target/ "
-                '''
             }
         }
         stage('SonaqQube Test') {
