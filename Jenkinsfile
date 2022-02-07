@@ -53,7 +53,7 @@ pipeline {
                 echo "Remove older war files"
                 sh '''
                    ls -ltr $APP_PATH
-                   rm -rf $APP_PATH/mkyong*
+                   rm -rf $APP_PATH/mkyon*
 
                    echo "After removing older application (sample)"
                    ls -ltr $APP_PATH/
