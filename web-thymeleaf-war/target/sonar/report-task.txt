@@ -1,6 +1,0 @@
-projectKey=org.springframework.boot:web-thymeleaf-war
-serverUrl=http://localhost:9000
-serverVersion=9.3.0.51899
-dashboardUrl=http://localhost:9000/dashboard?id=org.springframework.boot%3Aweb-thymeleaf-war
-ceTaskId=AX7TyXeJ5sYWErO0FECi
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AX7TyXeJ5sYWErO0FECi

@@ -18,7 +18,7 @@ pipeline {
                 sh '''
                    cd $TEMP_DIR
                    pwd
-                   mvn clean package
+                   /opt/homebrew/Cellar/maven/3.8.4/bin/mvn clean package
                    ls -ltr target/
                 '''
             }
