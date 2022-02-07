@@ -27,7 +27,7 @@ pipeline {
         stage('SonaqQube Test') {
             steps {
                 echo 'Testing..'
-                opt/homebrew/Cellar/maven/3.8.4/bin/mvn verify sonar:sonar -Dsonar.login=bf2e3735918f3ed8e1fd38f954b8a42d32bc656e
+                /opt/homebrew/Cellar/maven/3.8.4/bin/mvn verify sonar:sonar -Dsonar.login=bf2e3735918f3ed8e1fd38f954b8a42d32bc656e
             }
         }
         stage('Deploy') {
