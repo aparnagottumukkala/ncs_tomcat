@@ -4,6 +4,7 @@ pipeline {
         ROOT_PATH  =  "/Users/manojvarma/Desktop/NCS_Demo/apache-tomcat-9.0.58"
         APP_PATH   =  "$ROOT_PATH/webapps"
         TEMP_DIR   =  "${env.WORKSPACE}/web-thymeleaf-war"
+        VERSION    =  "1.0.${env.BUILD_NUMBER}" 
     }
     stages {
         stage('Build') {
@@ -12,15 +13,16 @@ pipeline {
                 sh 'printenv'
                 echo "workspace ${env.WORKSPACE}" 
                 echo "BuildNumber :: ${env.BUILD_NUMBER}"
-                
+                echo "VERSION :: $VERSION"
                 echo "generating war file"
                 sh "cd $TEMP_DIR"
                 sh '''
                    cd $TEMP_DIR
                    pwd
-                   /opt/homebrew/Cellar/maven/3.8.4/bin/mvn -B org.codehaus.mojo:versions-maven-plugin:2.5:set -DprocessAllModules -DnewVersion="1.0.${env.BUILD_NUMBER}"
-                   /opt/homebrew/Cellar/maven/3.8.4/bin/mvn clean package
-                   ls -ltr target/
+                ''' 
+                sh " /opt/homebrew/Cellar/maven/3.8.4/bin/mvn -B org.codehaus.mojo:versions-maven-plugin:2.5:set -DprocessAllModules -DnewVersion=1.0.$VERSION "
+                sh "   /opt/homebrew/Cellar/maven/3.8.4/bin/mvn clean package "
+                sh "   ls -ltr target/ "
                 '''
             }
         }
