@@ -19,9 +19,10 @@ pipeline {
                 sh '''
                    cd $TEMP_DIR
                    pwd
-                   /opt/homebrew/Cellar/maven/3.8.4/bin/mvn -B org.codehaus.mojo:versions-maven-plugin:2.5:set -DprocessAllModules -DnewVersion=$VERSION
                    /opt/homebrew/Cellar/maven/3.8.4/bin/mvn clean package
                    ls -ltr target/
+                   echo "MD% checksum after generating WAR file"
+                   md5 target/mkyong.war
                 ''' 
                 // sh " /opt/homebrew/Cellar/maven/3.8.4/bin/mvn -B org.codehaus.mojo:versions-maven-plugin:2.5:set -DprocessAllModules -DnewVersion=$VERSION "
                 // sh "   /opt/homebrew/Cellar/maven/3.8.4/bin/mvn clean package "
@@ -63,6 +64,8 @@ pipeline {
                 sh "ls -ltr ${TEMP_DIR}/target/mkyong.war"
                 sh "cp ${TEMP_DIR}/target/mkyong.war $APP_PATH/"
                 sh "ls -ltr $APP_PATH" 
+                echo "-----After copying war : Checking MD5------"
+                sh "md5 $APP_PATH/mkyong.war " 
             }
         }
        stage('Start Catalina') {
