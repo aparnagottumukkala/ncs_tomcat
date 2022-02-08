@@ -21,7 +21,7 @@ pipeline {
                    pwd
                    /opt/homebrew/Cellar/maven/3.8.4/bin/mvn clean package
                    ls -ltr target/
-                   echo "MD% checksum after generating WAR file"
+                   echo "MD5 checksum after generating WAR file"
                    md5 target/mkyong.war
                 ''' 
                 // sh " /opt/homebrew/Cellar/maven/3.8.4/bin/mvn -B org.codehaus.mojo:versions-maven-plugin:2.5:set -DprocessAllModules -DnewVersion=$VERSION "
