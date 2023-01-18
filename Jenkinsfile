@@ -13,7 +13,7 @@ pipeline {
                 echo "BuildNumber :: ${env.BUILD_NUMBER}"
                 
                 echo "generating war file"
-                mvn clean package
+                bat "mvn clean package"
             }
         }
         stage('Test') {
