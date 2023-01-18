@@ -9,7 +9,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Compile..'
-                sh 'printenv'
                 echo "workspace ${env.WORKSPACE}" 
                 echo "BuildNumber :: ${env.BUILD_NUMBER}"
                 
