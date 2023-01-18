@@ -14,12 +14,10 @@ pipeline {
                 echo "BuildNumber :: ${env.BUILD_NUMBER}"
                 
                 echo "generating war file"
-                sh "cd $TEMP_DIR"
+                sh "dir"
                 sh '''
-                   cd $TEMP_DIR
-                   pwd
                    mvn clean package
-                   ls -ltr target/
+    
                 '''
             }
         }
